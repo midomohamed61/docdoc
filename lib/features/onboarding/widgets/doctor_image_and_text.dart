@@ -28,7 +28,7 @@ class DoctorImageAndText extends StatelessWidget {
           bottom: 30,
           left: 0,
           right: 0,
-          child: Text('Best Doctor in Town',style: TextStyles.font32BlueBold.copyWith(height: 1.4),textAlign: TextAlign.center,),
+          child: Text('Best Doctor in Town',style: TextStyles.font32BlueBold.copyWith(height: 1.2),textAlign: TextAlign.center,),
         )
       ]
     );
