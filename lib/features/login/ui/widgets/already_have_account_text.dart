@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theming/styles.dart';
 
-class DontHaveAccountText extends StatelessWidget {
-  const DontHaveAccountText({super.key});
+class AlreadyHaveAccountText extends StatelessWidget {
+  const AlreadyHaveAccountText({super.key});
 
   @override
   Widget build(BuildContext context) {

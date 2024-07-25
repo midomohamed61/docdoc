@@ -1,10 +1,14 @@
 import 'package:docdoc/core/helpers/spacing.dart';
 import 'package:docdoc/core/theming/styles.dart';
 import 'package:docdoc/core/widgets/app_text_button.dart';
-import 'package:docdoc/core/widgets/app_text_form_field.dart';
-import 'package:docdoc/features/login/ui/widgets/dont_have_account_text.dart';
+import 'package:docdoc/features/login/data/models/login_request_body.dart';
+import 'package:docdoc/features/login/logic/cubit/login_cubit.dart';
+import 'package:docdoc/features/login/ui/widgets/already_have_account_text.dart';
+import 'package:docdoc/features/login/ui/widgets/email_and_password.dart';
+import 'package:docdoc/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:docdoc/features/login/ui/widgets/terms_and_conditions_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,7 +19,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
   bool isObscureText = true;
   @override
   Widget build(BuildContext context) {
@@ -37,51 +40,43 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyles.font14GrayRegular,
             ),
             verticalSpace(36),
-            Form(
-              key: _formKey,
-              child:  Column(
-                children: [
-                  const AppTextFormField(
-                    hintText: 'Email',
+            Column(
+              children: [
+                const EmailAndPassword(),
+                verticalSpace(24),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    'Forgot Password?',
+                    style: TextStyles.font13BlueRegular,
                   ),
-                  verticalSpace(18),
-                   AppTextFormField(
-                    hintText: 'Password',
-                    obscureText: isObscureText,
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          isObscureText = !isObscureText;
-                        });
-                      },
-                      icon: Icon(isObscureText
-                          ? Icons.visibility
-                          : Icons.visibility_off),
-                    ),
-                  ),
-                  verticalSpace(24),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyles.font13BlueRegular,
-                    ),
-                  ),
-                  verticalSpace(40),
-                  AppTextButton(
-                    buttonText: 'Login',
-                    onPressed: () {}, textStyle: TextStyles.font16WhiteSemiBold,
-                  ),
-                  verticalSpace(40),
-                  const TermsAndConditionsText(),
-                  verticalSpace(60),
-                  const DontHaveAccountText(),
-                  ]
-              ),
+                ),
+                verticalSpace(40),
+                AppTextButton(
+                  buttonText: 'Login',
+                  onPressed: () {
+                    validateThenDoLogin(context);
+                  }, textStyle: TextStyles.font16WhiteSemiBold,
+                ),
+                verticalSpace(40),
+                const TermsAndConditionsText(),
+                verticalSpace(60),
+                const AlreadyHaveAccountText(),
+                const LoginBlocListener(),
+                ]
             )
           ]),
         ),
       ),
     ));
   }
+  
+  void validateThenDoLogin(BuildContext context) {
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoadingState(LoginRequestBody(
+        email: context.read<LoginCubit>().emailController.text,
+        password: context.read<LoginCubit>().passwordController.text
+      ));
+  }
+}
 }

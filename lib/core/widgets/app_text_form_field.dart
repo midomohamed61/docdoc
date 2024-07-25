@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 class AppTextFormField extends StatelessWidget {
-  const AppTextFormField({super.key, this.contentPadding, this.focusedBorder, this.enabledBorder, this.hintStyle,required this.hintText, this.obscureText, this.suffixIcon, this.fillColor});
+  const AppTextFormField({super.key, this.contentPadding, this.focusedBorder, this.enabledBorder, this.hintStyle,required this.hintText, this.obscureText, this.suffixIcon, this.fillColor, this.controller,required this.validator});
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
@@ -15,9 +15,12 @@ class AppTextFormField extends StatelessWidget {
   final bool? obscureText;
   final Widget? suffixIcon;
   final Color? fillColor;
+  final TextEditingController? controller;
+  final Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       decoration:  InputDecoration(
        isDense: true,
        contentPadding: contentPadding ?? EdgeInsets.symmetric(vertical: 18.h, horizontal: 20.w),
@@ -35,6 +38,20 @@ class AppTextFormField extends StatelessWidget {
          ),
          borderRadius: BorderRadius.all(Radius.circular(16.0)),
        ),
+       errorBorder: const OutlineInputBorder(
+         borderSide: BorderSide(
+           color: Color.fromARGB(255, 255, 0, 0),
+           width: 1.3
+         ),
+         borderRadius: BorderRadius.all(Radius.circular(16.0)),
+       ),
+       focusedErrorBorder: const OutlineInputBorder(
+         borderSide: BorderSide(
+           color: Color.fromARGB(255, 255, 0, 0),
+           width: 1.3
+         ),
+         borderRadius: BorderRadius.all(Radius.circular(16.0)),
+       ),
        hintStyle: hintStyle ?? TextStyles.font14LightGrayRegular,
        hintText: hintText,
        suffixIcon: suffixIcon,
@@ -43,6 +60,9 @@ class AppTextFormField extends StatelessWidget {
       ),
       obscureText: obscureText ?? false,
       style: TextStyles.font15DarkBlueMedium,
+      validator: (valu){
+        return validator!(valu);
+      },
     );
   }
 }
