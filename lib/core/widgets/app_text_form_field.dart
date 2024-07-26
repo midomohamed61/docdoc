@@ -1,12 +1,10 @@
 import 'package:docdoc/core/theming/colors.dart';
 import 'package:docdoc/core/theming/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 class AppTextFormField extends StatelessWidget {
-  const AppTextFormField({super.key, this.contentPadding, this.focusedBorder, this.enabledBorder, this.hintStyle,required this.hintText, this.obscureText, this.suffixIcon, this.fillColor, this.controller,required this.validator});
+  const AppTextFormField({super.key, this.contentPadding, this.focusedBorder, this.enabledBorder, this.hintStyle,required this.hintText, this.obscureText, this.suffixIcon, this.fillColor, this.controller,required this.validator, required bool isObscureText});
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;

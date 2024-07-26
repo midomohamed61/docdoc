@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:docdoc/core/helpers/extentions.dart';
 import 'package:docdoc/core/routing/routes.dart';

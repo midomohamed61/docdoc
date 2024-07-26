@@ -53,10 +53,11 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
             }
             return null;
           },
-          hintText: 'Email',
+          hintText: 'Email', isObscureText: isObscureText,
         ),
         verticalSpace(18),
         AppTextFormField(
+          isObscureText: isObscureText,
           controller: context.read<LoginCubit>().passwordController,
           validator: (value) {
             if (value == null || value.isEmpty) {
