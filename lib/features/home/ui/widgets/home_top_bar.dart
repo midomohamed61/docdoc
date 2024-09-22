@@ -9,7 +9,6 @@ class HomeTopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var font12GrayRegular;
     return Row(
       children: [
         Column(
