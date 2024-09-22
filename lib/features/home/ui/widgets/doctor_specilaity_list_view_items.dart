@@ -1,23 +1,20 @@
 import 'package:docdoc/core/helpers/spacing.dart';
 import 'package:docdoc/core/theming/colors.dart';
 import 'package:docdoc/core/theming/styles.dart';
+import 'package:docdoc/features/home/data/models/specializations_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class DoctorSprcilatityListVilw extends StatelessWidget {
-  const DoctorSprcilatityListVilw({super.key});
+class DoctorSpecilaityListViewItems extends StatelessWidget {
+  final SpecializationsData specializationsData;
+  final int itemindex;
+  const DoctorSpecilaityListViewItems({super.key, required this.specializationsData, required this.itemindex});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100.h,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 8,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsetsDirectional.only(start: index == 0 ? 0 : 24.w),
+    return Padding(
+            padding: EdgeInsetsDirectional.only(start: itemindex == 0 ? 0 : 24.w),
             child: Column(
               children: [
                 CircleAvatar(
@@ -31,14 +28,11 @@ class DoctorSprcilatityListVilw extends StatelessWidget {
                 ),
                 verticalSpace(8),
                 Text(
-                  'Omar',
+                  specializationsData.name ?? '3amk',
                   style: TextStyles.font12DarkBlueRegular,
                 ),
               ],
             ),
           );
-        },
-      ),
-    );
   }
 }
