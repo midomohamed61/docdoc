@@ -1,3 +1,5 @@
+import 'package:docdoc/core/helpers/extentions.dart';
+import 'package:docdoc/core/routing/routes.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +23,7 @@ class DontHaveAccountText extends StatelessWidget {
             style: TextStyles.font13BlueSemiBold,
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                // context.pushReplacementNamed(Routes.signUpScreen);
+                 context.pushReplacementNamed(Routes.signUpScreen);
               },
           ),
         ],

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "509283368235",
+    "project_id": "docdoc-dc240",
+    "storage_bucket": "docdoc-dc240.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509283368235:android:71618ab140cac07de8996e",
+        "android_client_info": {
+          "package_name": "com.example.docdoc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjXgJu4DPpKecRaGU_ycJ3rVzSZp9HaXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

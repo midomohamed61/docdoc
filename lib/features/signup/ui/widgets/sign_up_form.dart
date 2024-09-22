@@ -14,7 +14,7 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
-    bool isObscureText = true;
+  bool isObscureText = true;
 
   bool isPasswordObscureText = true;
   bool isPasswordConfirmationObscureText = true;
@@ -60,7 +60,8 @@ class _SignupFormState extends State<SignupForm> {
                 return 'Please enter a valid name';
               }
             },
-            controller: context.read<SignupCubit>().nameController, isObscureText: isObscureText,
+            controller: context.read<SignupCubit>().nameController,
+            isObscureText: isObscureText,
           ),
           verticalSpace(18),
           AppTextFormField(
@@ -72,11 +73,11 @@ class _SignupFormState extends State<SignupForm> {
                 return 'Please enter a valid phone number';
               }
             },
-            controller: context.read<SignupCubit>().phoneController, isObscureText: isObscureText,
+            controller: context.read<SignupCubit>().phoneController,
+            isObscureText: isObscureText,
           ),
           verticalSpace(18),
           AppTextFormField(
-            
             hintText: 'Email',
             validator: (value) {
               if (value == null ||
@@ -85,7 +86,8 @@ class _SignupFormState extends State<SignupForm> {
                 return 'Please enter a valid email';
               }
             },
-            controller: context.read<SignupCubit>().emailController, isObscureText: isObscureText,
+            controller: context.read<SignupCubit>().emailController,
+            isObscureText: isObscureText,
           ),
           verticalSpace(18),
           AppTextFormField(
